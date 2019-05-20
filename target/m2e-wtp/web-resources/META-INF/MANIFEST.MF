@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: retail
+Implementation-Version: 1.0
+Built-By: jasar_jamaludheen
+Implementation-Vendor-Id: com.apple
+Build-Jdk: 1.8.0_202
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/retail
+Created-By: Maven Integration for Eclipse
+

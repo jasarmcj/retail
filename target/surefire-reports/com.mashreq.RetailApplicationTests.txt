@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.mashreq.RetailApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.4 s - in com.mashreq.RetailApplicationTests
