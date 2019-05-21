@@ -5,6 +5,13 @@ import java.sql.Date;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * User entity
+ *
+ */
 @Entity
 public class User {
 

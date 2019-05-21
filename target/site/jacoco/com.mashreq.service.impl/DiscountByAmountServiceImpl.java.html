@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DiscountByAmountServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.mashreq.service.impl</a> &gt; <span class="el_source">DiscountByAmountServiceImpl.java</span></div><h1>DiscountByAmountServiceImpl.java</h1><pre class="source lang-java linenums">package com.mashreq.service.impl;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.mashreq.dto.CheckoutResponse;
+import com.mashreq.service.DiscountService;
+
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Class to apply discount by total amount in the bill
+ * 
+ * 1.	For every $100 on the bill, there would be a $ 5 discount (e.g. for $ 990, you get $ 45 as a discount).
+ * 2. A user can get only one of the percentage based discounts on a bill.
+ *
+ */
+@Service
+<span class="fc" id="L20">public class DiscountByAmountServiceImpl implements DiscountService {</span>
+	
+<span class="fc" id="L22">	private final double discountByAmount = 100.00;</span>
+<span class="fc" id="L23">	private final double discountAmount = 100.00;</span>
+	
+<span class="fc" id="L25">	private static final Logger _LOGGER = LogManager.getLogger(DiscountByAmountServiceImpl.class);</span>
+
+	@Override
+	public void applyDiscounts(CheckoutResponse checkoutResponse) throws Exception {
+		
+<span class="fc" id="L30">		double totalDiscount = (checkoutResponse.getTotalPrice().doubleValue() / discountByAmount) * discountAmount;</span>
+<span class="fc" id="L31">		double totalPriceAfterDiscount = checkoutResponse.getTotalPrice().doubleValue() - totalDiscount;</span>
+		
+<span class="fc" id="L33">		_LOGGER.info(&quot;Applied discount before DiscountByAmount: &quot; + checkoutResponse.getTotalDiscount());</span>
+<span class="pc bpc" id="L34" title="3 of 4 branches missed.">		if(null == checkoutResponse.getTotalDiscount() || checkoutResponse.getTotalDiscount().doubleValue() &lt; totalDiscount) {</span>
+<span class="fc" id="L35">			checkoutResponse.setTotalDiscount(totalDiscount);</span>
+<span class="fc" id="L36">			checkoutResponse.setTotalPriceAfterDiscount(totalPriceAfterDiscount);</span>
+<span class="fc" id="L37">			_LOGGER.info(&quot;Discount applied by DiscountByAmount: &quot; + checkoutResponse.getTotalDiscount());</span>
+		}
+		
+<span class="fc" id="L40">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CheckoutResponse.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.mashreq.dto</a> &gt; <span class="el_source">CheckoutResponse.java</span></div><h1>CheckoutResponse.java</h1><pre class="source lang-java linenums">package com.mashreq.dto;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for holding checkout response data
+ *
+ */
+<span class="fc" id="L13">public class CheckoutResponse {</span>
+
+	private UserDto user;
+	private Double totalPrice;
+	private Double totalDiscount;
+	private Double totalPriceAfterDiscount;
+<span class="fc" id="L19">	private List&lt;SelectedProduct&gt; selectedProducts = new ArrayList&lt;SelectedProduct&gt;();</span>
+
+	public UserDto getUser() {
+<span class="fc" id="L22">		return user;</span>
+	}
+
+	public void setUser(UserDto user) {
+<span class="fc" id="L26">		this.user = user;</span>
+<span class="fc" id="L27">	}</span>
+
+	public Double getTotalPrice() {
+<span class="fc" id="L30">		return totalPrice;</span>
+	}
+
+	public void setTotalPrice(Double totalPrice) {
+<span class="fc" id="L34">		this.totalPrice = totalPrice;</span>
+<span class="fc" id="L35">	}</span>
+
+	public List&lt;SelectedProduct&gt; getSelectedProducts() {
+<span class="fc" id="L38">		return selectedProducts;</span>
+	}
+
+	public void setSelectedProducts(List&lt;SelectedProduct&gt; selectedProducts) {
+<span class="fc" id="L42">		this.selectedProducts = selectedProducts;</span>
+<span class="fc" id="L43">	}</span>
+
+	public Double getTotalDiscount() {
+<span class="fc" id="L46">		return totalDiscount;</span>
+	}
+
+	public void setTotalDiscount(Double totalDiscount) {
+<span class="fc" id="L50">		this.totalDiscount = totalDiscount;</span>
+<span class="fc" id="L51">	}</span>
+
+	public Double getTotalPriceAfterDiscount() {
+<span class="fc" id="L54">		return totalPriceAfterDiscount;</span>
+	}
+
+	public void setTotalPriceAfterDiscount(Double totalPriceAfterDiscount) {
+<span class="fc" id="L58">		this.totalPriceAfterDiscount = totalPriceAfterDiscount;</span>
+<span class="fc" id="L59">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DiscountByUserTypeServiceImpl.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.mashreq.service.impl</a> &gt; <span class="el_source">DiscountByUserTypeServiceImpl.java</span></div><h1>DiscountByUserTypeServiceImpl.java</h1><pre class="source lang-java linenums">package com.mashreq.service.impl;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.Period;
+import java.time.ZoneId;
+import java.util.Date;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.springframework.stereotype.Service;
+
+import com.mashreq.dto.CheckoutResponse;
+import com.mashreq.dto.SelectedProduct;
+import com.mashreq.dto.UserDto;
+import com.mashreq.service.DiscountService;
+
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Class to apply discount by user type
+ * 
+ * 1.	If the user is an employee of the store, he gets a 30% discount
+ * 2.	If the user is an affiliate of the store, he gets a 10% discount
+ * 3.	If the user has been a customer for over 2 years, he gets a 5% discount.
+ * 4.	The percentage based discounts do not apply on groceries.
+ * 5.	A user can get only one of the percentage based discounts on a bill.
+ *
+ */
+@Service
+<span class="fc" id="L32">public class DiscountByUserTypeServiceImpl implements DiscountService {</span>
+
+<span class="fc" id="L34">	private final double employeeDiscountPercenage = 30.00;</span>
+<span class="fc" id="L35">	private final double affiliateDiscountPercenage = 10.00;</span>
+	
+<span class="fc" id="L37">	private final int loyalUserYear = 2;</span>
+<span class="fc" id="L38">	private final double loyalUserDiscountPercenage = 5.00;</span>
+	
+<span class="fc" id="L40">	private static final Logger _LOGGER = LogManager.getLogger(DiscountByUserTypeServiceImpl.class);</span>
+	
+	@Override
+	public void applyDiscounts(CheckoutResponse checkoutResponse) throws Exception {
+		
+<span class="fc" id="L45">		UserDto user = checkoutResponse.getUser();</span>
+		
+<span class="fc" id="L47">		double discountPercentage = 0.00;</span>
+<span class="fc bfc" id="L48" title="All 2 branches covered.">		if(&quot;EMPLOYEE&quot;.equalsIgnoreCase(user.getUserType())) {</span>
+<span class="fc" id="L49">			discountPercentage = employeeDiscountPercenage;</span>
+<span class="fc bfc" id="L50" title="All 2 branches covered.">		} else if(&quot;AFFILIATE&quot;.equalsIgnoreCase(user.getUserType())) {</span>
+<span class="fc" id="L51">			discountPercentage = affiliateDiscountPercenage;</span>
+		}  else {
+			
+<span class="fc bfc" id="L54" title="All 2 branches covered.">			if(isLoyaluser(user.getUserRegisterDate().getTime())) {</span>
+<span class="fc" id="L55">				discountPercentage = loyalUserDiscountPercenage;</span>
+			}
+		} 
+		
+<span class="fc bfc" id="L59" title="All 2 branches covered.">		if(discountPercentage &gt; 0.00) {</span>
+			
+<span class="fc" id="L61">			double totalDiscount = 0.00;</span>
+<span class="fc bfc" id="L62" title="All 2 branches covered.">			for(SelectedProduct product : checkoutResponse.getSelectedProducts()) {</span>
+<span class="fc bfc" id="L63" title="All 2 branches covered.">				if(product.getDiscountAllowed()) {</span>
+<span class="fc" id="L64">					product.setDiscountPercentage(discountPercentage);</span>
+<span class="fc" id="L65">					double discount = product.getProductPrice().doubleValue() * discountPercentage / 100.00;</span>
+<span class="fc" id="L66">					totalDiscount = totalDiscount + discount;</span>
+<span class="fc" id="L67">					product.setProductPriceAfterDiscount(product.getProductPrice().doubleValue() - discount);</span>
+<span class="fc" id="L68">				} else {</span>
+<span class="fc" id="L69">					_LOGGER.info(&quot;Discount not applicable for product type :: &quot; + product.getProductType());</span>
+<span class="fc" id="L70">					product.setDiscountPercentage(0.00);</span>
+<span class="fc" id="L71">					product.setProductPriceAfterDiscount(product.getProductPrice());</span>
+				}
+<span class="fc" id="L73">			}</span>
+			
+<span class="fc" id="L75">			_LOGGER.info(&quot;Applied discount before DiscountByUserTyper: &quot; + checkoutResponse.getTotalDiscount());</span>
+<span class="pc bpc" id="L76" title="2 of 4 branches missed.">			if(null == checkoutResponse.getTotalDiscount() || checkoutResponse.getTotalDiscount().doubleValue() &lt; totalDiscount) {</span>
+<span class="nc" id="L77">				checkoutResponse.setTotalDiscount(totalDiscount);</span>
+<span class="nc" id="L78">				checkoutResponse.setTotalPriceAfterDiscount(checkoutResponse.getTotalPrice().doubleValue() - totalDiscount);</span>
+<span class="nc" id="L79">				_LOGGER.info(&quot;Discount applied by DiscountByUserTyper: &quot; + checkoutResponse.getTotalDiscount());</span>
+			} else {
+<span class="fc" id="L81">				_LOGGER.info(&quot;Applied discount by DiscountByAmount is greater than DiscountByUserTyper. So resetting product wise discount&quot;);</span>
+<span class="fc" id="L82">				resetDiscount(checkoutResponse);</span>
+			}
+		}
+<span class="fc" id="L85">	}</span>
+
+	private void resetDiscount(CheckoutResponse checkoutResponse) {
+<span class="fc bfc" id="L88" title="All 2 branches covered.">		for(SelectedProduct product : checkoutResponse.getSelectedProducts()) {</span>
+<span class="fc" id="L89">			product.setDiscountPercentage(0.00);</span>
+<span class="fc" id="L90">			product.setProductPriceAfterDiscount(product.getProductPrice());</span>
+<span class="fc" id="L91">			product.setDiscountAllowed(false);</span>
+<span class="fc" id="L92">		}</span>
+<span class="fc" id="L93">	}</span>
+	
+	private boolean isLoyaluser(long date2) throws Exception {
+		
+<span class="fc" id="L97">		long date1 = new Date().getTime();</span>
+<span class="fc" id="L98">		LocalDate localDate1 = LocalDateTime.ofInstant(Instant.ofEpochMilli(date1), ZoneId.systemDefault()).toLocalDate();</span>
+<span class="fc" id="L99">		LocalDate localDate2 = LocalDateTime.ofInstant(Instant.ofEpochMilli(date2), ZoneId.systemDefault()).toLocalDate();</span>
+		
+<span class="fc bfc" id="L101" title="All 2 branches covered.">		return Period.between(localDate2, localDate1).getYears() &gt;= 2 ? true : false;</span>
+	}
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

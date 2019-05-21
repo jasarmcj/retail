@@ -1,5 +1,12 @@
 package com.mashreq.dto;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for holding selected product details
+ *
+ */
 public class SelectedProduct {
 
 	private Long productId;

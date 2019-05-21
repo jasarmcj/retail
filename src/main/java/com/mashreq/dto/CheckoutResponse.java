@@ -3,6 +3,13 @@ package com.mashreq.dto;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for holding checkout response data
+ *
+ */
 public class CheckoutResponse {
 
 	private UserDto user;

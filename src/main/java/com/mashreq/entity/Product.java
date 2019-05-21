@@ -3,6 +3,13 @@ package com.mashreq.entity;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * Product Entity 
+ *
+ */
 @Entity
 public class Product {
 

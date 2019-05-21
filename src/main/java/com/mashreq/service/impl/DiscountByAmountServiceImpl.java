@@ -7,6 +7,15 @@ import org.springframework.stereotype.Service;
 import com.mashreq.dto.CheckoutResponse;
 import com.mashreq.service.DiscountService;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Class to apply discount by total amount in the bill
+ * 
+ * 1.	For every $100 on the bill, there would be a $ 5 discount (e.g. for $ 990, you get $ 45 as a discount).
+ * 2. A user can get only one of the percentage based discounts on a bill.
+ *
+ */
 @Service
 public class DiscountByAmountServiceImpl implements DiscountService {
 	
@@ -16,7 +25,7 @@ public class DiscountByAmountServiceImpl implements DiscountService {
 	private static final Logger _LOGGER = LogManager.getLogger(DiscountByAmountServiceImpl.class);
 
 	@Override
-	public void applyDiscounts(CheckoutResponse checkoutResponse) {
+	public void applyDiscounts(CheckoutResponse checkoutResponse) throws Exception {
 		
 		double totalDiscount = (checkoutResponse.getTotalPrice().doubleValue() / discountByAmount) * discountAmount;
 		double totalPriceAfterDiscount = checkoutResponse.getTotalPrice().doubleValue() - totalDiscount;

@@ -18,6 +18,12 @@ import com.mashreq.entity.User;
 import com.mashreq.service.DiscountService;
 import com.mashreq.service.RetailService;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Retail service implementation class
+ *
+ */
 @Service
 public class RetailServiceImpl implements RetailService {
 

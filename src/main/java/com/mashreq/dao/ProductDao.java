@@ -5,6 +5,13 @@ import org.springframework.stereotype.Repository;
 
 import com.mashreq.entity.Product;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * Product dao 
+ *
+ */
 @Repository
 public interface ProductDao extends JpaRepository<Product, Long> {
 

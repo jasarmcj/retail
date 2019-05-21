@@ -2,6 +2,13 @@ package com.mashreq.dto;
 
 import java.util.Date;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for holding users details
+ *
+ */
 public class UserDto {
 
 	private Long userId;

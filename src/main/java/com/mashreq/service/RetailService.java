@@ -5,7 +5,12 @@ import org.springframework.stereotype.Service;
 import com.mashreq.dto.CheckoutRequest;
 import com.mashreq.dto.CheckoutResponse;
 
-@Service
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Retail service interface
+ *
+ */
 public interface RetailService {
 
 	public CheckoutResponse checkoutProducts(CheckoutRequest checkoutRequest) throws Exception;

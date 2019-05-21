@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>User.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.mashreq.entity</a> &gt; <span class="el_source">User.java</span></div><h1>User.java</h1><pre class="source lang-java linenums">package com.mashreq.entity;
+
+import java.sql.Date;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * User entity
+ *
+ */
+@Entity
+<span class="fc" id="L16">public class User {</span>
+
+	private Long userId;
+	private String userName;
+	private String userType;
+	private Date userRegisterDate;
+
+	@Id
+	public Long getUserId() {
+<span class="nc" id="L25">		return userId;</span>
+	}
+
+	public void setUserId(Long userId) {
+<span class="fc" id="L29">		this.userId = userId;</span>
+<span class="fc" id="L30">	}</span>
+
+	public String getUserName() {
+<span class="fc" id="L33">		return userName;</span>
+	}
+
+	public void setUserName(String userName) {
+<span class="fc" id="L37">		this.userName = userName;</span>
+<span class="fc" id="L38">	}</span>
+
+	public String getUserType() {
+<span class="fc" id="L41">		return userType;</span>
+	}
+
+	public void setUserType(String userType) {
+<span class="fc" id="L45">		this.userType = userType;</span>
+<span class="fc" id="L46">	}</span>
+
+	public Date getUserRegisterDate() {
+<span class="fc" id="L49">		return userRegisterDate;</span>
+	}
+
+	public void setUserRegisterDate(Date userRegisterDate) {
+<span class="fc" id="L53">		this.userRegisterDate = userRegisterDate;</span>
+<span class="fc" id="L54">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

@@ -14,6 +14,13 @@ import com.mashreq.dto.Response;
 import com.mashreq.exception.RetailAppException;
 import com.mashreq.service.RetailService;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * Retail application main controller to handle the checkout requests
+ *
+ */
 @RestController
 @RequestMapping(value = "/api/v1")
 public class RetailController {

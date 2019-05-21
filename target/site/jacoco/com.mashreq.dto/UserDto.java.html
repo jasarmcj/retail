@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>UserDto.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">retail</a> &gt; <a href="index.source.html" class="el_package">com.mashreq.dto</a> &gt; <span class="el_source">UserDto.java</span></div><h1>UserDto.java</h1><pre class="source lang-java linenums">package com.mashreq.dto;
+
+import java.util.Date;
+
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for holding users details
+ *
+ */
+<span class="fc" id="L12">public class UserDto {</span>
+
+	private Long userId;
+	private String userName;
+	private String userType;
+	private double discountPercentage;
+	private Date userRegisterDate;
+
+	public Long getUserId() {
+<span class="fc" id="L21">		return userId;</span>
+	}
+
+	public void setUserId(Long userId) {
+<span class="fc" id="L25">		this.userId = userId;</span>
+<span class="fc" id="L26">	}</span>
+
+	public String getUserName() {
+<span class="fc" id="L29">		return userName;</span>
+	}
+
+	public void setUserName(String userName) {
+<span class="fc" id="L33">		this.userName = userName;</span>
+<span class="fc" id="L34">	}</span>
+
+	public String getUserType() {
+<span class="fc" id="L37">		return userType;</span>
+	}
+
+	public void setUserType(String userType) {
+<span class="fc" id="L41">		this.userType = userType;</span>
+<span class="fc" id="L42">	}</span>
+
+	public double getDiscountPercentage() {
+<span class="fc" id="L45">		return discountPercentage;</span>
+	}
+
+	public void setDiscountPercentage(double discountPercentage) {
+<span class="nc" id="L49">		this.discountPercentage = discountPercentage;</span>
+<span class="nc" id="L50">	}</span>
+
+	public Date getUserRegisterDate() {
+<span class="fc" id="L53">		return userRegisterDate;</span>
+	}
+
+	public void setUserRegisterDate(Date userRegisterDate) {
+<span class="fc" id="L57">		this.userRegisterDate = userRegisterDate;</span>
+<span class="fc" id="L58">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.7.201606060606</span></div></body></html>

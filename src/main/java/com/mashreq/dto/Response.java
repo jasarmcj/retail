@@ -1,5 +1,12 @@
 package com.mashreq.dto;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * 
+ * POJO for sending response from controller
+ *
+ */
 public class Response {
 
 	private String status;

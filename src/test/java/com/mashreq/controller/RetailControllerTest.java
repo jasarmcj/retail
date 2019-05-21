@@ -18,6 +18,12 @@ import org.springframework.web.context.WebApplicationContext;
 import com.mashreq.RetailApplication;
 import com.mashreq.util.TestUtil;
 
+/**
+ * 
+ * @author jasar_jamaludheen
+ * Controller test class
+ *
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @WebAppConfiguration
 @ContextConfiguration(classes = RetailApplication.class)
@@ -35,11 +41,77 @@ public class RetailControllerTest {
 		
 	}
 	
+	/**
+	 * Test case to validate employee checkout
+	 */
 	@Test
-	public void testCheckout() {
+	public void testCheckout_employee() {
 		
 		try {
 			String checkoutRequest = TestUtil.getJSONObjectStringByJSONFileName("employeeCheckout.json");
+			
+			ResultActions andExpect = this.mockMvc
+					.perform(MockMvcRequestBuilders.multipart("/api/v1/checkout")
+							.contentType("application/json")
+							.content(checkoutRequest));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Test case to validate affiliate checkout
+	 */
+	@Test
+	public void testCheckout_affiliate() {
+		
+		try {
+			String checkoutRequest = TestUtil.getJSONObjectStringByJSONFileName("affiliateCheckout.json");
+			
+			ResultActions andExpect = this.mockMvc
+					.perform(MockMvcRequestBuilders.multipart("/api/v1/checkout")
+							.contentType("application/json")
+							.content(checkoutRequest));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Test case to validate loyal user (user registered before 2 years) checkout
+	 */
+	@Test
+	public void testCheckout_loyalUser() {
+		
+		try {
+			String checkoutRequest = TestUtil.getJSONObjectStringByJSONFileName("loyalUserCheckout.json");
+			
+			ResultActions andExpect = this.mockMvc
+					.perform(MockMvcRequestBuilders.multipart("/api/v1/checkout")
+							.contentType("application/json")
+							.content(checkoutRequest));
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
+	
+	/**
+	 * Test case to validate normal user checkout
+	 */
+	@Test
+	public void testCheckout_user() {
+		
+		try {
+			String checkoutRequest = TestUtil.getJSONObjectStringByJSONFileName("userCheckout.json");
 			
 			ResultActions andExpect = this.mockMvc
 					.perform(MockMvcRequestBuilders.multipart("/api/v1/checkout")
