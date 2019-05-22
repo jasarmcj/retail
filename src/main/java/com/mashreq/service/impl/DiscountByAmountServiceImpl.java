@@ -20,7 +20,7 @@ import com.mashreq.service.DiscountService;
 public class DiscountByAmountServiceImpl implements DiscountService {
 	
 	private final double discountByAmount = 100.00;
-	private final double discountAmount = 100.00;
+	private final double discountAmount = 5.00;
 	
 	private static final Logger _LOGGER = LogManager.getLogger(DiscountByAmountServiceImpl.class);
 
